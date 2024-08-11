@@ -140,3 +140,36 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 warnings FALSE
+dependency instructions TRUE
+CODE:
+'''
+pip install opencv-python
+Run this code in any python IDE
+''' 
+import cv2
+
+# Read from the webcam
+cap = cv2.VideoCapture(0)
+
+while True:
+     # Read a frame from the webcam
+    ret, frame = cap.read()
+
+    # Convert to grayscale
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Apply a mask for lateral inversion (flip horizontally)
+    mask = cv2.flip(gray, 1)
+
+    # Display the processed frames
+    cv2.imshow('Grayscale', gray)
+    cv2.imshow('Lateral Inversion', mask)
+
+    # Break loop on 'd' key press
+    if cv2.waitKey(1) & 0xFF == ord('d'):
+        break
+    
+# Release resources
+cap.release()
+cv2.destroyAllWindows()
+warnings FALSE
