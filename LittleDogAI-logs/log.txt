@@ -1,0 +1,142 @@
+LittleDogAI-Logdependency instructions TRUE
+CODE:
+Instructions = """To run this code, make sure you have Python installed on your system. No additional libraries are required."""
+print(Instructions)
+
+a = 20
+b = 20
+c = a + b
+print("c =", c)
+
+warnings TRUE
+warnings FALSE
+dependency instructions TRUE
+CODE:
+req = "First run : pip install opencv-python\nThis program finds sum of 2 numbers\nRun the program in any python IDE"
+print(req)
+a = 20
+b = 20
+c= a+b # adding two numbers to variable c
+print("sum :",c)   
+
+warnings TRUE
+warnings FALSE
+dependency instructions FALSE
+CODE:
+a = 10 # assigning 10 to variable a
+b = 40 # assigning 40 to variable b
+c = a + b # calculating the sum of a and b, and storing it in variable c
+print(c) # displaying the value of c 
+
+warnings FALSE
+dependency instructions FALSE
+CODE:
+import cv2
+
+# Initialize default camera
+cap = cv2.VideoCapture(0) 
+
+while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Display the resulting frame
+    cv2.imshow('Webcam Feed', frame)
+
+    # Break the loop on 'd' key press
+    if cv2.waitKey(1) & 0xFF == ord('d'):
+        break
+
+# Release resources
+cap.release()
+cv2.destroyAllWindows()
+
+warnings FALSE
+dependency instructions FALSE
+CODE:
+import cv2
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = cap.read()
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    _, mask = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+
+    cv2.imshow('Webcam (Grayscale and Masked)', mask)
+
+    if cv2.waitKey(1) == ord('d'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+
+warnings FALSE
+dependency instructions FALSE
+CODE:
+import cv2
+
+cap = cv2.VideoCapture(0) 
+
+while True:
+    ret, frame = cap.read()
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    _, mask = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+    flipped = cv2.flip(mask, 1)
+    cv2.imshow('Webcam (Grayscale & Masked & Inverted)', flipped)  
+    if cv2.waitKey(1) & 0xFF == ord('d'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+
+warnings FALSE
+dependency instructions TRUE
+CODE:
+instructions = """To run this code, no additional installations are required. 
+Simply copy and paste the code into a Python environment and run it directly."""
+print(instructions)
+
+a = int(input("Enter a number: ")) # get input a from the user
+b = 320
+c = a + b
+print(c) 
+
+warnings FALSE
+dependency instructions TRUE
+CODE:
+instructions = """a - user input
+b - 320
+a + b is c
+show c
+
+get opencv
+
+z is c - 300
+blur the image z times
+"""
+print(instructions)
+a = int(input())
+b = 320
+c = a + b
+print(c)
+
+
+
+# Make sure you have OpenCV installed. If not, uncomment and run the following line once.
+# pip install opencv-python
+import cv2 
+
+z = c - 300
+
+# Load the image
+image = cv2.imread("your_image.jpg") # Replace "your_image.jpg" with your image file.
+
+# Apply Gaussian blur
+blurred_image = cv2.GaussianBlur(image, (41,41), z) # (41,41) is the kernel size, You can adjust it. 
+
+# Display the blurred image
+cv2.imshow("Blurred Image", blurred_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+warnings FALSE
